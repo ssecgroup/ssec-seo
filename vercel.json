@@ -3,7 +3,15 @@
   "builds": [
     {
       "src": "api/scan.py",
-      "use": "@vercel/python"
+      "use": "@vercel/python",
+      "config": {
+        "maxDuration": 60,
+        "memory": 1024
+      }
+    },
+    {
+      "src": "public/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -12,14 +20,12 @@
       "dest": "/api/scan.py"
     },
     {
+      "src": "/",
+      "dest": "/public/index.html"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/api/scan.py"
+      "dest": "/public/$1"
     }
-  ],
-  "functions": {
-    "api/scan.py": {
-      "maxDuration": 60,
-      "memory": 1024
-    }
-  }
+  ]
 }
