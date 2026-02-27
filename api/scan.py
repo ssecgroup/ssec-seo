@@ -1,5 +1,5 @@
 """
-SPYGLASS API for Vercel - Complete working version with proper imports
+SPYGLASS API for Vercel - Direct import fix
 """
 import sys
 import os
@@ -11,58 +11,60 @@ from urllib.parse import parse_qs, urlparse
 # Get the absolute path to the project root
 project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Add all possible paths
+# Add all necessary paths
 sys.path.insert(0, project_root)
-sys.path.insert(0, os.path.join(project_root, 'spyglass'))
 sys.path.insert(0, os.path.join(project_root, 'core'))
+sys.path.insert(0, os.path.join(project_root, 'core', 'crawler'))
+sys.path.insert(0, os.path.join(project_root, 'core', 'scanners'))
+sys.path.insert(0, os.path.join(project_root, 'core', 'reporters'))
 
-# Try multiple import strategies
-HAS_SPYGLASS = False
-UltimateSEOEngine = None
-ScanConfig = None
-
+# Direct imports from core
 try:
-    # Strategy 1: Direct import from spyglass package
-    from spyglass.core.ultimate_engine import UltimateSEOEngine
-    from spyglass.core.config import ScanConfig
+    # Import directly from the core module
+    from core.ultimate_engine import UltimateSEOEngine
+    from core.config import ScanConfig
     HAS_SPYGLASS = True
-    print("✅ Import strategy 1 succeeded")
-except ImportError as e1:
+    print("✅ Direct import from core succeeded")
+except ImportError as e:
     try:
-        # Strategy 2: Import from core directly
-        sys.path.insert(0, os.path.join(project_root, 'core'))
-        from ultimate_engine import UltimateSEOEngine
-        from config import ScanConfig
+        # Alternative: import from the file directly
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            "ultimate_engine", 
+            os.path.join(project_root, "core", "ultimate_engine.py")
+        )
+        ultimate_engine = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(ultimate_engine)
+        UltimateSEOEngine = ultimate_engine.UltimateSEOEngine
+        
+        spec2 = importlib.util.spec_from_file_location(
+            "config", 
+            os.path.join(project_root, "core", "config.py")
+        )
+        config = importlib.util.module_from_spec(spec2)
+        spec2.loader.exec_module(config)
+        ScanConfig = config.ScanConfig
+        
         HAS_SPYGLASS = True
-        print("✅ Import strategy 2 succeeded")
-    except ImportError as e2:
-        try:
-            # Strategy 3: Import from local modules
-            from core.ultimate_engine import UltimateSEOEngine
-            from core.config import ScanConfig
-            HAS_SPYGLASS = True
-            print("✅ Import strategy 3 succeeded")
-        except ImportError as e3:
-            print(f"❌ All import strategies failed:")
-            print(f"  Strategy 1: {e1}")
-            print(f"  Strategy 2: {e2}")
-            print(f"  Strategy 3: {e3}")
-            print(f"Python path: {sys.path}")
-            print(f"Project root contents: {os.listdir(project_root) if os.path.exists(project_root) else 'Not found'}")
+        print("✅ Dynamic import succeeded")
+    except Exception as e2:
+        HAS_SPYGLASS = False
+        print(f"❌ All imports failed: {e2}")
+        print(f"❌ Dynamic import failed: {e2}")
 
 class handler(BaseHTTPRequestHandler):
     """Handle HTTP requests to Vercel"""
     
     def do_GET(self):
-        """Handle GET requests - API status and quick scan"""
+        """Handle GET requests"""
         self._handle_request('GET')
     
     def do_POST(self):
-        """Handle POST requests - Full HTML report"""
+        """Handle POST requests"""
         self._handle_request('POST')
     
     def do_OPTIONS(self):
-        """Handle CORS preflight requests"""
+        """Handle CORS"""
         self.send_response(200)
         self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
@@ -70,69 +72,66 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
     
     def _handle_request(self, method):
-        """Unified request handler"""
+        """Handle requests"""
         
         # Parse URL
         parsed = urlparse(self.path)
         query = parse_qs(parsed.query)
         
-        # Handle CORS
+        # Set CORS headers
         self.send_response(200)
         self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
         self.send_header('Access-Control-Allow-Headers', 'Content-Type')
         
-        # Check if spyglass is available
         if not HAS_SPYGLASS:
             self.send_header('Content-type', 'application/json')
             self.end_headers()
-            
-            # Get directory listing for debugging
-            project_contents = []
-            if os.path.exists(project_root):
-                project_contents = os.listdir(project_root)[:10]
-            
-            core_path = os.path.join(project_root, 'core')
-            core_contents = []
-            if os.path.exists(core_path):
-                core_contents = os.listdir(core_path)[:10]
-            
             self.wfile.write(json.dumps({
                 'status': 'error',
-                'error': 'Spyglass module not installed',
-                'message': 'Running in diagnostic mode',
+                'error': 'Spyglass modules could not be imported',
                 'project_root': project_root,
-                'project_contents': project_contents,
-                'core_contents': core_contents,
-                'python_path': sys.path[:5]
+                'core_exists': os.path.exists(os.path.join(project_root, 'core')),
+                'ultimate_engine_exists': os.path.exists(os.path.join(project_root, 'core', 'ultimate_engine.py'))
             }).encode())
             return
         
-        # Handle different methods
-        if method == 'GET':
-            # Get URL from query string
-            url = query.get('url', [''])[0]
+        # Handle GET with URL parameter
+        if method == 'GET' and 'url' in query:
+            url = query['url'][0]
             
-            if not url:
+            try:
+                # Run async scan
+                loop = asyncio.new_event_loop()
+                asyncio.set_event_loop(loop)
+                
+                # Create minimal config
+                config = ScanConfig(max_pages=1, concurrent_requests=1)
+                engine = UltimateSEOEngine(config)
+                
+                # Run scan
+                results = loop.run_until_complete(engine.scan(url))
+                loop.close()
+                
                 self.send_header('Content-type', 'application/json')
                 self.end_headers()
                 self.wfile.write(json.dumps({
-                    'status': 'ok',
-                    'message': 'SPYGLASS API is running!',
-                    'version': '0.1.0',
-                    'import_status': 'success',
-                    'endpoints': {
-                        'GET /api/scan?url=example.com': 'Quick scan',
-                        'POST /api/scan (JSON with {"url": "..."})': 'Full HTML report'
-                    }
+                    'status': 'success',
+                    'url': url,
+                    'pages_scanned': results['statistics']['pages_crawled'],
+                    'issues_found': results['statistics']['total_issues']
                 }).encode())
-                return
-            
-            # Quick scan with GET
-            self._run_scan(url, quick=True)
-            
+                
+            except Exception as e:
+                self.send_header('Content-type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json.dumps({
+                    'status': 'error',
+                    'error': str(e)
+                }).encode())
+        
+        # Handle POST for full report
         elif method == 'POST':
-            # Get URL from POST body
             content_length = int(self.headers.get('Content-Length', 0))
             post_data = self.rfile.read(content_length)
             
@@ -143,80 +142,39 @@ class handler(BaseHTTPRequestHandler):
                 if not url:
                     self.send_header('Content-type', 'application/json')
                     self.end_headers()
-                    self.wfile.write(json.dumps({'error': 'Missing url parameter'}).encode())
+                    self.wfile.write(json.dumps({'error': 'Missing url'}).encode())
                     return
                 
-                # Full scan with POST
-                self._run_scan(url, quick=False)
+                # Run full scan
+                loop = asyncio.new_event_loop()
+                asyncio.set_event_loop(loop)
                 
-            except json.JSONDecodeError:
-                self.send_header('Content-type', 'application/json')
-                self.end_headers()
-                self.wfile.write(json.dumps({'error': 'Invalid JSON'}).encode())
-    
-    def _run_scan(self, url, quick=True):
-        """Run scan and return results"""
-        try:
-            # Validate URL
-            if not url.startswith(('http://', 'https://')):
-                url = 'https://' + url
-            
-            # Run async scan
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
-            
-            # Configure scan based on type
-            if quick:
-                config = ScanConfig(
-                    max_pages=2,
-                    concurrent_requests=1,
-                    check_subdomains=False,
-                    check_ssl_tls=False,
-                    check_exposed_data=False,
-                    check_misconfigurations=False,
-                    check_dead_links=False
-                )
-            else:
-                config = ScanConfig(
-                    max_pages=5,
-                    concurrent_requests=2,
-                    check_subdomains=True,
-                    check_ssl_tls=True,
-                    check_exposed_data=True,
-                    check_misconfigurations=True,
-                    check_dead_links=True
-                )
-            
-            engine = UltimateSEOEngine(config)
-            results = loop.run_until_complete(engine.scan(url))
-            loop.close()
-            
-            if quick:
-                # Return JSON for quick scan
-                self.send_header('Content-type', 'application/json')
-                self.end_headers()
-                self.wfile.write(json.dumps({
-                    'status': 'success',
-                    'url': url,
-                    'pages_scanned': results['statistics']['pages_crawled'],
-                    'total_issues': results['statistics']['total_issues'],
-                    'critical_issues': results['statistics']['critical_issues'],
-                    'high_issues': results['statistics']['high_issues'],
-                    'score': results['summary']['overall_score'],
-                    'risk_level': results['summary']['risk_level']
-                }).encode())
-            else:
-                # Return HTML for full report
+                config = ScanConfig(max_pages=5, concurrent_requests=2)
+                engine = UltimateSEOEngine(config)
+                results = loop.run_until_complete(engine.scan(url))
+                
+                # Generate HTML report
                 report_html = engine.generate_report('html')
+                loop.close()
+                
                 self.send_header('Content-type', 'text/html')
                 self.end_headers()
                 self.wfile.write(report_html.encode())
-            
-        except Exception as e:
+                
+            except Exception as e:
+                self.send_header('Content-type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json.dumps({'error': str(e)}).encode())
+        
+        # Default response
+        else:
             self.send_header('Content-type', 'application/json')
             self.end_headers()
             self.wfile.write(json.dumps({
-                'status': 'error',
-                'error': str(e),
-                'type': str(type(e).__name__)
+                'status': 'ok',
+                'message': 'SPYGLASS API is running',
+                'endpoints': {
+                    'GET /api/scan?url=example.com': 'Quick scan',
+                    'POST /api/scan with {"url": "example.com"}': 'Full HTML report'
+                }
             }).encode())
