@@ -1,0 +1,23 @@
+[project]
+name = "spyglass-seo"
+version = "0.1.0"
+description = "Ultimate SEO Intelligence Platform"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "aiohttp>=3.9.0",
+    "beautifulsoup4>=4.12.0",
+    "lxml>=4.9.0",
+    "click>=8.1.0",
+    "rich>=13.0.0",
+    "dnspython>=2.4.0",
+    "cryptography>=41.0.0",
+    "pyOpenSSL>=23.0.0",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.uv]
+# Remove any invalid [tool.uv.sources] section with "-" in it
