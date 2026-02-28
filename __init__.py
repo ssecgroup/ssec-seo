@@ -1,5 +1,5 @@
 """
-🔍 SPYGLASS - Ultimate SEO Intelligence Platform
+ssec-seo - SEO Intelligence Platform by ssecgroup
 =================================================
 The most advanced open-source SEO scanner ever built.
 
