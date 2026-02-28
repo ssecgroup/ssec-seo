@@ -1,13 +1,13 @@
 {
   "version": 2,
+  "name": "ssec-seo",
   "builds": [
     {
       "src": "api/scan.py",
       "use": "@vercel/python",
       "config": {
-        "maxDuration": 300,
-        "memory": 1024,
-        "runtime": "python3.9"
+        "maxDuration": 60,
+        "memory": 1024
       }
     },
     {
