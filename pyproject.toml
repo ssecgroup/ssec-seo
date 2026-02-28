@@ -13,6 +13,10 @@ dependencies = [
     "dnspython>=2.4.0",
     "cryptography>=41.0.0",
     "pyOpenSSL>=23.0.0",
+    "matplotlib>=3.5.0",          # 👈 ADDED for charts
+    "plotly>=5.17.0",              # 👈 ADDED for interactive charts
+    "jinja2>=3.1.0",                # 👈 ADDED for HTML templates
+    "numpy>=1.24.0"                 # 👈 ADDED for numerical operations
 ]
 
 [build-system]
@@ -20,4 +24,4 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.uv]
-# Remove any invalid [tool.uv.sources] section with "-" in it
+# (Keep as is)
