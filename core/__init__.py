@@ -1,5 +1,5 @@
 """
-SPYGLASS Core Module
+ssec-seo Core Module
 """
 from .ultimate_engine import UltimateSEOEngine
 from .config import ScanConfig
