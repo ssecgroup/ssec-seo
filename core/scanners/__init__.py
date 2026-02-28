@@ -1,5 +1,5 @@
 """
-SPYGLASS Scanners Module
+ssec-seo Scanners Module
 """
 from .dead_links import DeadLinkScanner
 from .exposed_data import ExposedDataScanner

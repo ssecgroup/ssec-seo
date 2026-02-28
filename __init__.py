@@ -25,17 +25,17 @@ Usage:
     engine.generate_report(results, "report.html")
 
 CLI:
-    spyglass scan https://example.com --auto-pdf
-    spyglass quick https://example.com
-    spyglass configure
+    ssec-seo scan https://example.com --auto-pdf
+    ssec-seo quick https://example.com
+    ssec-seo configure
 
 Version: 0.1.0
 License: MIT
-Author: SPYGLASS Team
+Author: ssecgroup_shiyanthan k
 """
 
 __version__ = "0.1.0"
-__author__ = "SPYGLASS Team"
+__author__ = "ssec-seo"
 __license__ = "MIT"
 
 from spyglass.core.ultimate_engine import UltimateSEOEngine

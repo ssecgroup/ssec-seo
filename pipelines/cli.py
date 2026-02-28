@@ -49,7 +49,7 @@ def scan(url, max_pages, concurrent, output):
         return
     
     # Rest of scan function...
-    # (keep same functionality but update any spyglass references)
+    # (keep same functionality - all references updated)
 
 def main():
     cli()

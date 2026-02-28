@@ -26,7 +26,7 @@ class HTMLReportGenerator:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔍 SPYGLASS SEO Report by https://github/ssecgroup - {scan_results.get('target_url', '')}</title>
+    <title>🔍 ssec-seo SEO Report - {scan_results.get('target_url', '')}</title>
     <style>
         * {{
             margin: 0;
@@ -185,7 +185,7 @@ class HTMLReportGenerator:
     <div class="report-container" id="report-content">
         <div class="header">
             <div>
-                <h1>🔍 SPYGLASS SEO Report by https://github/ssecgroup </h1>
+                <h1>🔍 ssec-seo SEO Report</h1>
                 <p>Target: {scan_results.get('target_url', 'N/A')}</p>
                 <p>Scan Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
             </div>
@@ -253,7 +253,7 @@ class HTMLReportGenerator:
             const element = document.getElementById('report-content');
             const opt = {{
                 margin:       1,
-                filename:     'spyglass_report_{scan_results.get('target_domain', 'scan')}.pdf',
+                filename:     'ssec-seo_report_{scan_results.get('target_domain', 'scan')}.pdf',
                 image:        {{ type: 'jpeg', quality: 0.98 }},
                 html2canvas:  {{ scale: 2 }},
                 jsPDF:        {{ unit: 'in', format: 'a4', orientation: 'portrait' }}

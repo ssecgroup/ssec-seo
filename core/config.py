@@ -1,5 +1,5 @@
 """
-Advanced configuration system for SPYGLASS
+Advanced configuration system for  ssec-seo
 """
 from dataclasses import dataclass, field
 from typing import List, Dict, Optional
