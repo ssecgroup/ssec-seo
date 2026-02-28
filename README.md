@@ -1,12 +1,12 @@
-#  SPYGLASS - Ultimate SEO Intelligence Platform
+#  ssec-seo - SEO Scanner by ssecgroup 
 
 [![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![GitHub Actions](https://img.shields.io/badge/CI-GitHub%20Actions-blue)](https://github.com/ssecgroup/spyglass/actions)
-[![GitHub Pages](https://img.shields.io/badge/docs-github%20pages-blue)](https://ssecgroup.github.io/spyglass)
+[![GitHub Actions](https://img.shields.io/badge/CI-GitHub%20Actions-blue)](https://github.com/ssecgroup/ssec-seo/actions)
+[![GitHub Pages](https://img.shields.io/badge/docs-github%20pages-blue)](https://ssecgroup.github.io/ssec-seo)
 [![Donate](https://img.shields.io/badge/Donate-Ethereum-blue.svg)](#donate)
-[![Downloads](https://img.shields.io/github/downloads/ssecgroup/spyglass/total)](https://github.com/ssecgroup/spyglass/releases)
-[![Stars](https://img.shields.io/github/stars/ssecgroup/spyglass)](https://github.com/ssecgroup/spyglass/stargazers)
+[![Downloads](https://img.shields.io/github/downloads/ssecgroup/ssec-seo/total)](https://github.com/ssecgroup/ssec-seo/releases)
+[![Stars](https://img.shields.io/github/stars/ssecgroup/ssec-seo)](https://github.com/ssecgroup/ssec-seo/stargazers)
 
 **The most advanced open-source SEO scanner - 100% FREE forever**  
 *See what others miss. Find exposed data, subdomains, SSL issues, and more.*
@@ -32,24 +32,24 @@
 
 ### Install via pip
 ```bash
-pip install spyglass-seo
+pip install ssec-seo
 ```
 
 ### Scan any website
 ```bash
-spyglass scan https://example.com
+ssec-seo scan https://example.com
 ```
 
 ### Quick info
 ```bash
-spyglass quick https://google.com
+ssec-seo quick https://google.com
 ```
 
 ---
 
 ##  Example Report
 
-When you run a scan, SPYGLASS generates a **beautiful HTML report** with:
+When you run a scan, ssec-seo generates a **beautiful HTML report** with:
 - Executive summary with scores
 - Interactive severity charts
 - Critical issues highlighted
@@ -58,7 +58,7 @@ When you run a scan, SPYGLASS generates a **beautiful HTML report** with:
 - SSL certificate details
 - Actionable recommendations
 
-[ View Sample Report](https://ssecgroup.github.io/spyglass/sample.html)
+[ View Sample Report](https://ssecgroup.github.io/ssec-seo/sample.html)
 
 ---
 
@@ -66,7 +66,7 @@ When you run a scan, SPYGLASS generates a **beautiful HTML report** with:
 
 ### Scan with custom options
 ```bash
-spyglass scan https://example.com --max-pages 500 --concurrent 50 --output report.html
+ssec-seo scan https://example.com --max-pages 500 --concurrent 50 --output report.html
 ```
 
 ### Batch scan multiple URLs
@@ -80,19 +80,19 @@ echo "https://site2.com" >> urls.txt
 
 ### Configuration file
 ```bash
-spyglass configure  # Creates spyglass_config.json
-spyglass load spyglass_config.json
+ssec-seo configure  # Creates ssec-seo_config.json
+ssec-seo load ssec-seo_config.json
 ```
 
 ---
 
 ##  GitHub Actions (Free Cloud Scanning)
 
-SPYGLASS includes ready-to-use GitHub Actions workflows:
+ssec-seo includes ready-to-use GitHub Actions workflows:
 
 ### Manual scan
 1. Go to **Actions** tab
-2. Select **SPYGLASS SEO Scan**
+2. Select **ssec-seo**
 3. Enter URL and click **Run workflow**
 4. Download report from artifacts
 
@@ -108,7 +108,7 @@ Scan 100+ websites automatically using the matrix workflow.
 
 ---
 
-##  What SPYGLASS Finds
+##  What ssec-seo Finds
 
 | Severity | What We Detect |
 |----------|----------------|
@@ -123,29 +123,29 @@ Scan 100+ websites automatically using the matrix workflow.
 
 ### Linux / macOS
 ```bash
-git clone https://github.com/ssecgroup/spyglass.git
-cd spyglass
+git clone https://github.com/ssecgroup/ssec-seo.git
+cd ssec-seo
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 pip install -e .
-spyglass --help
+ssec-seo --help
 ```
 
 ### Windows
 ```powershell
-git clone https://github.com/ssecgroup/spyglass.git
-cd spyglass
+git clone https://github.com/ssecgroup/ssec-seo.git
+cd ssec-seo
 python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
 pip install -e .
-spyglass --help
+ssec-seo --help
 ```
 
 ### Docker
 ```bash
-docker run --rm ssecgroup/spyglass scan https://example.com
+docker run --rm ssecgroup/ssec-seo scan https://example.com
 ```
 
 ---
@@ -160,7 +160,7 @@ pytest tests/
 pytest tests/test_scanners/test_ssl_scanner.py
 
 # Test with coverage
-pytest --cov=spyglass tests/
+pytest --cov=ssec-seo tests/
 ```
 
 ---
@@ -181,7 +181,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ## 💖 Donate
 
-SPYGLASS is **completely free** and always will be.  
+ssec-seo is **completely free** and always will be.  
 If you find it valuable, consider supporting development:
 
 **Ethereum**: `0x8242f0f25c5445F7822e80d3C9615e57586c6639`
@@ -220,7 +220,7 @@ Copyright (c) 2026 [ssecgroup](https://github.com/ssecgroup)
 
 ## ⭐ Support Us
 
-If you like SPYGLASS:
+If you like ssec-seo:
 - ⭐ Star this repository
 - 🐦 Share on Twitter
 - 👥 Tell your friends
