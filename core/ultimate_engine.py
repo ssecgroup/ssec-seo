@@ -1,5 +1,5 @@
 """
-Ultimate SEO Engine -By [github/ssecgroup] Ties everything together
+Ultimate SEO Engine - By [github/ssecgroup] Ties everything together
 """
 import asyncio
 from datetime import datetime
@@ -9,22 +9,23 @@ import json
 import time
 import aiohttp
 
-from spyglass.core.config import ScanConfig
-from spyglass.core.crawler.advanced_spider import AdvancedSEOSpider
-from spyglass.core.scanners.ssl_scanner import SSLScanner
-from spyglass.core.scanners.subdomain_scanner import SubdomainScanner
-from spyglass.core.scanners.http_misconfig import HTTPMisconfigScanner
-from spyglass.core.scanners.exposed_data import ExposedDataScanner
-from spyglass.core.scanners.dead_links import DeadLinkScanner
-from spyglass.core.scanners.http_headers import HTTPHeadersScanner
-from spyglass.core.scanners.redirects import RedirectScanner
-from spyglass.core.scanners.security import SecurityScanner
-from spyglass.core.scanners.tech_detection import TechnologyDetector
-from spyglass.core.reporters.ultimate_reporter import UltimateReporter
+# FIXED: Changed all imports from spyglass.core to core
+from core.config import ScanConfig
+from core.crawler.advanced_spider import AdvancedSEOSpider
+from core.scanners.ssl_scanner import SSLScanner
+from core.scanners.subdomain_scanner import SubdomainScanner
+from core.scanners.http_misconfig import HTTPMisconfigScanner
+from core.scanners.exposed_data import ExposedDataScanner
+from core.scanners.dead_links import DeadLinkScanner
+from core.scanners.http_headers import HTTPHeadersScanner
+from core.scanners.redirects import RedirectScanner
+from core.scanners.security import SecurityScanner
+from core.scanners.tech_detection import TechnologyDetector
+from core.reporters.ultimate_reporter import UltimateReporter
 
 class UltimateSEOEngine:
     """
-    The most advanced open-source SEO engine ever built -by https://github/ssecgroup
+    The most advanced open-source SEO engine ever built - by https://github/ssecgroup
     """
     
     def __init__(self, config: Optional[ScanConfig] = None):
@@ -44,7 +45,7 @@ class UltimateSEOEngine:
         domain = parsed.netloc or parsed.path
         
         print("\n" + "="*80)
-        print(f" SPYGLASS ULTIMATE SEO SCAN")
+        print(f" SSEC-SEO ULTIMATE SEO SCAN")
         print("="*80)
         print(f"Target: {url}")
         print(f"Domain: {domain}")
@@ -89,7 +90,7 @@ class UltimateSEOEngine:
             
             # Phase 1: Crawl website
             self.stats['current_phase'] = 'crawling'
-            print("\n PHASE 1: Advanced Website Crawling")
+            print("\n📡 PHASE 1: Advanced Website Crawling")
             print("-" * 40)
             
             async with AdvancedSEOSpider(self.config) as spider:
@@ -102,7 +103,7 @@ class UltimateSEOEngine:
             # Phase 2: SSL/TLS Analysis
             if self.config.check_ssl_tls:
                 self.stats['current_phase'] = 'ssl_analysis'
-                print("\n PHASE 2: SSL/TLS Deep Analysis")
+                print("\n🔒 PHASE 2: SSL/TLS Deep Analysis")
                 print("-" * 40)
                 
                 ssl_scanner = SSLScanner()
@@ -115,20 +116,20 @@ class UltimateSEOEngine:
             # Phase 3: Subdomain Discovery
             if self.config.check_subdomains:
                 self.stats['current_phase'] = 'subdomain_discovery'
-                print("\n PHASE 3: Subdomain Discovery")
+                print("\n🌐 PHASE 3: Subdomain Discovery")
                 print("-" * 40)
                 
                 sub_scanner = SubdomainScanner()
                 sub_results = await sub_scanner.discover(domain)
                 self.results['subdomains'] = sub_results
                 
-                print(f" Found {sub_results.get('total_found', 0)} subdomains")
-                print(f" {len(sub_results.get('active', []))} active")
+                print(f"✅ Found {sub_results.get('total_found', 0)} subdomains")
+                print(f"✅ {len(sub_results.get('active', []))} active")
             
             # Phase 4: HTTP Misconfigurations
             if self.config.check_misconfigurations:
                 self.stats['current_phase'] = 'misconfiguration_scan'
-                print("\n PHASE 4: HTTP Misconfiguration Scan")
+                print("\n⚠️ PHASE 4: HTTP Misconfiguration Scan")
                 print("-" * 40)
                 
                 http_scanner = HTTPMisconfigScanner()
@@ -148,7 +149,7 @@ class UltimateSEOEngine:
             # Phase 5: Exposed Data Scan
             if self.config.check_exposed_data:
                 self.stats['current_phase'] = 'exposed_data_scan'
-                print("\n PHASE 5: Exposed Data Scan")
+                print("\n🔍 PHASE 5: Exposed Data Scan")
                 print("-" * 40)
                 
                 exposed_scanner = ExposedDataScanner()
@@ -168,7 +169,7 @@ class UltimateSEOEngine:
             # Phase 6: Dead Links Check
             if self.config.check_dead_links:
                 self.stats['current_phase'] = 'dead_links'
-                print("\n PHASE 6: Dead Links Check")
+                print("\n💀 PHASE 6: Dead Links Check")
                 print("-" * 40)
                 
                 dead_scanner = DeadLinkScanner()
@@ -187,7 +188,7 @@ class UltimateSEOEngine:
             
             # Phase 7: Security Headers
             self.stats['current_phase'] = 'security_headers'
-            print("\n PHASE 7: Security Headers Analysis")
+            print("\n🛡️ PHASE 7: Security Headers Analysis")
             print("-" * 40)
             
             headers_scanner = HTTPHeadersScanner()
@@ -197,7 +198,7 @@ class UltimateSEOEngine:
             
             # Phase 8: Redirect Analysis
             self.stats['current_phase'] = 'redirects'
-            print("\n PHASE 8: Redirect Chain Analysis")
+            print("\n🔄 PHASE 8: Redirect Chain Analysis")
             print("-" * 40)
             
             redirect_scanner = RedirectScanner()
@@ -207,7 +208,7 @@ class UltimateSEOEngine:
             
             # Phase 9: Security Vulnerability Scan
             self.stats['current_phase'] = 'security_scan'
-            print("\n PHASE 9: Security Vulnerability Scan")
+            print("\n🔐 PHASE 9: Security Vulnerability Scan")
             print("-" * 40)
             
             security_scanner = SecurityScanner()
@@ -217,7 +218,7 @@ class UltimateSEOEngine:
             
             # Phase 10: Technology Detection
             self.stats['current_phase'] = 'tech_detection'
-            print("\n PHASE 10: Technology Detection")
+            print("\n🔧 PHASE 10: Technology Detection")
             print("-" * 40)
             
             tech_detector = TechnologyDetector()
@@ -230,11 +231,11 @@ class UltimateSEOEngine:
                         tech_results = tech_detector.detect(headers, html, page['url'])
                         self.results['technologies'].extend(tech_results)
                         tech_count += len(tech_results)
-                print(f" Detected {tech_count} technologies")
+                print(f"✅ Detected {tech_count} technologies")
         
         # Phase 11: Generate Recommendations
         self.stats['current_phase'] = 'recommendations'
-        print("\n PHASE 11: Generating Recommendations")
+        print("\n💡 PHASE 11: Generating Recommendations")
         print("-" * 40)
         
         self.results['recommendations'] = self._generate_recommendations()
@@ -396,4 +397,3 @@ class UltimateSEOEngine:
         """Generate report in specified format"""
         reporter = UltimateReporter(self.config)
         return reporter.generate(self.results, format)
-
