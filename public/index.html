@@ -234,9 +234,10 @@
         
         <div class="error" id="error"></div>
         
+        <!-- FIX 1: Change SPYGLASS to ssec-seo in donation section -->
         <div class="donate">
             <h3>💖 Support Open Source</h3>
-            <p>SPYGLASS is completely free. If you find it useful:</p>
+            <p><strong>ssec-seo</strong> is completely free. If you find it useful:</p>
             <div class="eth-address" onclick="copyAddress()">
                 0x8242f0f25c5445F7822e80d3C9615e57586c6639
             </div>
@@ -416,7 +417,8 @@
             const blob = new Blob([window.lastReportHTML], { type: 'text/html' });
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
-            a.download = `spyglass_report_${currentUrl.replace(/[^a-z0-9]/gi, '_')}_${new Date().getTime()}.html`;
+            // FIX 2: Change filename from spyglass_report_ to ssec-seo_report_
+            a.download = `ssec-seo_report_${currentUrl.replace(/[^a-z0-9]/gi, '_')}_${new Date().getTime()}.html`;
             a.click();
         }
         
