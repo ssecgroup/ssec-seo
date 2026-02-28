@@ -9,7 +9,8 @@
   "routes": [
     {
       "src": "/api/scan",
-      "dest": "/api/scan.py"
+      "dest": "/api/scan.py",
+      "methods": ["GET", "POST", "OPTIONS"]
     },
     {
       "src": "/",
