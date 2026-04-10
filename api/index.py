@@ -1,4 +1,4 @@
-﻿"""
+"""
 ssec-seo API with embedded HTML - Fixed routing
 """
 from http.server import BaseHTTPRequestHandler
@@ -22,7 +22,7 @@ class handler(BaseHTTPRequestHandler):
             return
             
         # API docs
-        if path == '/api-docs' or path == '/api-docs.html':
+        if path in ['/api-docs', '/api-docs.html', '/docs']:
             self.serve_api_docs()
             return
         
@@ -63,7 +63,7 @@ class handler(BaseHTTPRequestHandler):
         html = '''<!DOCTYPE html>
 <html>
 <head>
-    <title>🔍 ssec-seo - SEO Scanner</title>
+    <title>?? ssec-seo - SEO Scanner</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -87,7 +87,7 @@ class handler(BaseHTTPRequestHandler):
 </head>
 <body>
     <div class="container">
-        <h1>🔍 ssec-seo</h1>
+        <h1>?? ssec-seo</h1>
         <div class="subtitle">SEO Intelligence Platform by ssecgroup - 100% Free</div>
         
         <input type="url" id="url" placeholder="https://example.com" value="https://example.com">
@@ -98,15 +98,15 @@ class handler(BaseHTTPRequestHandler):
         <div id="result" class="result" style="display:none;"></div>
         
         <div class="donate">
-            <h3>💖 Support Open Source</h3>
+            <h3>?? Support Open Source</h3>
             <p><strong>ssec-seo</strong> is completely free forever.</p>
             <code onclick="navigator.clipboard.writeText('0x8242f0f25c5445F7822e80d3C9615e57586c6639')">0x8242f0f25c5445F7822e80d3C9615e57586c6639</code>
             <p style="font-size:12px;margin-top:5px">Click to copy ETH address</p>
         </div>
         
         <footer>
-            <a href="https://github.com/ssecgroup/ssec-seo">GitHub</a> • 
-            <a href="/api/scan?debug=1">API Status</a> • 
+            <a href="https://github.com/ssecgroup/ssec-seo">GitHub</a> � 
+            <a href="/api/scan?debug=1">API Status</a> � 
             MIT License
         </footer>
     </div>
@@ -162,7 +162,7 @@ class handler(BaseHTTPRequestHandler):
 </head>
 <body>
     <div class="container">
-        <h1>🔍 ssec-seo API Documentation</h1>
+        <h1>?? ssec-seo API Documentation</h1>
         <p>The most advanced open-source SEO scanner - 100% FREE forever</p>
         
         <div class="endpoint">
@@ -178,7 +178,7 @@ class handler(BaseHTTPRequestHandler):
         </div>
         
         <div class="endpoint">
-            <h2>📊 Example Response</h2>
+            <h2>?? Example Response</h2>
             <pre>{
   "status": "success",
   "url": "https://example.com",
@@ -188,7 +188,7 @@ class handler(BaseHTTPRequestHandler):
 }</pre>
         </div>
         
-        <p style="margin-top:40px"><a href="/">← Back to Scanner</a></p>
+        <p style="margin-top:40px"><a href="/">? Back to Scanner</a></p>
     </div>
 </body>
 </html>'''
