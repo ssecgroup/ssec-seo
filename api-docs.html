@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>ssec-seo API Documentation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 40px 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; }
+        .container { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 20px; padding: 40px; }
+        h1 { margin-bottom: 10px; }
+        .endpoint { background: rgba(0,0,0,0.2); padding: 20px; border-radius: 10px; margin: 20px 0; }
+        code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px; }
+        pre { background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; overflow-x: auto; }
+        a { color: #fff; }
+        .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+        .badge-get { background: #28a745; }
+        .badge-post { background: #fd7e14; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 ssec-seo API Documentation</h1>
+        <p>The most advanced open-source SEO scanner - 100% FREE forever</p>
+        
+        <div class="endpoint">
+            <h2><span class="badge badge-get">GET</span> /api/scan</h2>
+            <p>Quick SEO scan (returns JSON)</p>
+            <pre>curl "https://ssec-seo.vercel.app/api/scan?url=https://example.com"</pre>
+            <h3>Response:</h3>
+            <pre>{
+  "status": "success",
+  "url": "https://example.com",
+  "pages_scanned": 1,
+  "total_issues": 9,
+  "critical_issues": 0,
+  "high_issues": 1,
+  "medium_issues": 2,
+  "low_issues": 6,
+  "score": 96,
+  "risk_level": "low"
+}</pre>
+        </div>
+        
+        <div class="endpoint">
+            <h2><span class="badge badge-post">POST</span> /api/scan</h2>
+            <p>Full SEO scan (returns HTML report)</p>
+            <pre>curl -X POST https://ssec-seo.vercel.app/api/scan \
+  -H "Content-Type: application/json" \
+  -d '{"url":"https://example.com"}'</pre>
+        </div>
+        
+        <div class="endpoint">
+            <h2><span class="badge badge-get">GET</span> /api/scan?debug=1</h2>
+            <p>Debug endpoint - check API status</p>
+            <pre>curl "https://ssec-seo.vercel.app/api/scan?debug=1"</pre>
+        </div>
+        
+        <h2>🔧 Integration Examples</h2>
+        <div class="endpoint">
+            <h3>JavaScript/Fetch</h3>
+            <pre>fetch('https://ssec-seo.vercel.app/api/scan?url=https://example.com')
+  .then(r => r.json())
+  .then(data => console.log(data.score));</pre>
+        </div>
+        
+        <div class="endpoint">
+            <h3>Python</h3>
+            <pre>import requests
+r = requests.get('https://ssec-seo.vercel.app/api/scan', 
+                 params={'url': 'https://example.com'})
+print(r.json()['score'])</pre>
+        </div>
+        
+        <p style="margin-top: 40px; text-align: center;">
+            <a href="/">← Back to Scanner</a> | 
+            <a href="https://github.com/ssecgroup/ssec-seo">GitHub</a>
+        </p>
+    </div>
+</body>
+</html>
