@@ -1,11 +1,19 @@
+
 {
   "version": 2,
   "functions": {
     "api/scan.py": {
       "maxDuration": 60,
-      "memory": 1024
+      "memory": 1024,
+      "runtime": "python3.9"
     }
   },
+  "rewrites": [
+    {
+      "source": "/api/scan",
+      "destination": "/api/scan.py"
+    }
+  ],
   "routes": [
     {
       "src": "/api/scan",
@@ -14,6 +22,10 @@
     },
     {
       "src": "/",
+      "dest": "/public/index.html"
+    },
+    {
+      "src": "/index.html",
       "dest": "/public/index.html"
     },
     {
@@ -35,28 +47,7 @@
         },
         {
           "key": "Access-Control-Allow-Headers",
-          "value": "Content-Type, Authorization"
-        },
-        {
-          "key": "Access-Control-Max-Age",
-          "value": "86400"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
+          "value": "Content-Type"
         }
       ]
     }
