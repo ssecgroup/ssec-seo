@@ -36,6 +36,53 @@
             opacity: 0.9;
         }
         
+        /* ===== NEW: Scans Display ===== */
+        .scans-display {
+            display: flex;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            font-size: 12px;
+        }
+        
+        .scans-display span:last-child {
+            font-weight: bold;
+        }
+        /* ===== END: Scans Display ===== */
+        
+        /* ===== NEW: Out of Scans Panel ===== */
+        .out-of-scans {
+            background: rgba(255, 193, 7, 0.15);
+            border-radius: 12px;
+            margin: 15px 0;
+            padding: 20px;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+        }
+        
+        .out-of-scans h3 {
+            margin-bottom: 10px;
+        }
+        
+        .reset-timer {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .reset-timer p:first-child {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .reset-timer p:last-child {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        /* ===== END: Out of Scans Panel ===== */
+        
         .url-display {
             background: rgba(255, 255, 255, 0.15);
             padding: 10px;
@@ -242,6 +289,13 @@
             <p>SEO Scanner by ssecgroup</p>
         </div>
         
+        <!-- ===== NEW: Scans Remaining Display ===== -->
+        <div class="scans-display">
+            <span>🆓 Free scans remaining:</span>
+            <span id="scansRemaining">5/5</span>
+        </div>
+        <!-- ===== END: Scans Display ===== -->
+        
         <div id="loading" class="loading">
             <div class="spinner"></div>
             <p>Analyzing page...</p>
@@ -250,45 +304,69 @@
         <div id="content" style="display: none;">
             <div class="url-display" id="urlDisplay"></div>
             
-            <div class="score-section">
-                <div class="score-circle" id="scoreCircle">
-                    <div class="score-number" id="scoreNumber">--</div>
-                    <div class="score-label">SEO Score</div>
-                </div>
-                <div id="riskBadge" class="risk-badge">--</div>
-            </div>
-            
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-value" id="pagesScanned">0</div>
-                    <div class="stat-label">Pages</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="criticalIssues">0</div>
-                    <div class="stat-label">Critical</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="highIssues">0</div>
-                    <div class="stat-label">High</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="totalIssues">0</div>
-                    <div class="stat-label">Total</div>
+            <!-- ===== NEW: Out of Scans Panel (hidden by default) ===== -->
+            <div id="outOfScansPanel" class="out-of-scans" style="display: none;">
+                <div style="text-align: center;">
+                    <p style="font-size: 48px; margin-bottom: 10px;">😢</p>
+                    <h3 style="margin-bottom: 10px;">Out of Free Scans</h3>
+                    <p style="font-size: 13px; opacity: 0.9; margin-bottom: 15px;">
+                        You've used all 5 free scans.
+                    </p>
+                    <div class="reset-timer">
+                        <p><strong>⏰ Next reset in:</strong></p>
+                        <p id="timeRemainingDisplay">--:--</p>
+                    </div>
+                    <p style="font-size: 11px; opacity: 0.7;">
+                        Free tier resets every 24 hours.<br>
+                        You'll get 5 more scans automatically.
+                    </p>
                 </div>
             </div>
+            <!-- ===== END: Out of Scans Panel ===== -->
             
-            <div class="issues-section">
-                <h3>📋 Issues Found</h3>
-                <div id="issuesList"></div>
+            <!-- ===== WRAP RESULTS IN THIS DIV ===== -->
+            <div id="scanResultsArea">
+                <div class="score-section">
+                    <div class="score-circle" id="scoreCircle">
+                        <div class="score-number" id="scoreNumber">--</div>
+                        <div class="score-label">SEO Score</div>
+                    </div>
+                    <div id="riskBadge" class="risk-badge">--</div>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value" id="pagesScanned">0</div>
+                        <div class="stat-label">Pages</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="criticalIssues">0</div>
+                        <div class="stat-label">Critical</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="highIssues">0</div>
+                        <div class="stat-label">High</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="totalIssues">0</div>
+                        <div class="stat-label">Total</div>
+                    </div>
+                </div>
+                
+                <div class="issues-section">
+                    <h3>📋 Issues Found</h3>
+                    <div id="issuesList"></div>
+                </div>
+                
+                <a href="#" id="fullReportLink" class="button button-primary" target="_blank">
+                    📊 View Full Report
+                </a>
+                
+                <button id="rescanButton" class="button">
+                    🔄 Rescan Page
+                </button>
             </div>
-            
-            <a href="#" id="fullReportLink" class="button button-primary" target="_blank">
-                📊 View Full Report
-            </a>
-            
-            <button id="rescanButton" class="button">
-                🔄 Rescan Page
-            </button>
+            <!-- ===== END: Scan Results Area ===== -->
             
             <div class="donation">
                 <strong>💖 Support Open Source</strong><br>
@@ -298,7 +376,7 @@
             <div class="footer">
                 <a href="https://github.com/ssecgroup/ssec-seo" target="_blank">GitHub</a> • 
                 <a href="https://ssec-seo.vercel.app" target="_blank">Web App</a>
-                <div style="margin-top: 4px;">100% Free Forever</div>
+                <div style="margin-top: 4px;">Free tier: 5 scans / 24 hours</div>
             </div>
         </div>
     </div>
