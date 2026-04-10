@@ -1,7 +1,6 @@
 ﻿"""
-ssec-seo API for Vercel - SAFE VERSION
-Returns full SEO data matching frontend expectations
-With privacy-preserving audit logging and safe defaults
+ssec-seo API for Vercel - SAFE CONFIGURATION
+All features preserved, just with safer limits
 """
 import sys
 import os
@@ -87,10 +86,9 @@ class handler(BaseHTTPRequestHandler):
         return 'unknown'
     
     def do_GET(self):
-        """Handle GET requests - Quick scan (SAFE MODE)"""
+        """Handle GET requests - Quick scan"""
         client_ip = self.get_client_ip()
         
-        # Rate limit check
         if not rate_limiter.is_allowed(client_ip):
             self.send_response(429)
             self.send_header('Content-type', 'application/json')
@@ -112,31 +110,31 @@ class handler(BaseHTTPRequestHandler):
             self.wfile.write(json.dumps({
                 'engine_loaded': HAS_ENGINE,
                 'core_exists': os.path.exists(core_dir),
-                'safe_mode': True
+                'python_path': sys.path[:3]
             }).encode())
             return
         
         if not HAS_ENGINE:
-            self.wfile.write(json.dumps({'status': 'error', 'error': 'Engine failed'}).encode())
+            self.wfile.write(json.dumps({'status': 'error', 'error': 'Engine failed to load'}).encode())
             return
         
         if not url:
-            self.wfile.write(json.dumps({'status': 'ready', 'message': 'ssec-seo ready'}).encode())
+            self.wfile.write(json.dumps({'status': 'ready', 'message': 'ssec-seo engine ready'}).encode())
             return
         
         try:
             loop = asyncio.new_event_loop()
             asyncio.set_event_loop(loop)
             
-            # ===== SAFE QUICK SCAN CONFIG =====
+            # ===== SAFE QUICK SCAN - REDUCED LIMITS =====
             config = ScanConfig(
                 max_pages=3,                    # REDUCED from 5
-                concurrent_requests=2,
-                check_subdomains=False,         # SAFE
-                check_ssl_tls=True,             # SAFE
-                check_exposed_data=False,       # SAFE - DISABLED
-                check_misconfigurations=True,   # SAFE
-                check_dead_links=False          # SAFE - DISABLED
+                concurrent_requests=2,          # KEPT
+                check_subdomains=False,         # DISABLED for privacy
+                check_ssl_tls=True,             # KEPT
+                check_exposed_data=False,       # DISABLED for safety
+                check_misconfigurations=True,   # KEPT
+                check_dead_links=False          # DISABLED to reduce load
             )
             
             engine = UltimateSEOEngine(config)
@@ -160,10 +158,10 @@ class handler(BaseHTTPRequestHandler):
             self.wfile.write(json.dumps(response).encode())
             
         except Exception as e:
-            self.wfile.write(json.dumps({'status': 'error', 'error': str(e)}).encode())
+            self.wfile.write(json.dumps({'status': 'error', 'error': str(e), 'traceback': traceback.format_exc()}).encode())
     
     def do_POST(self):
-        """Handle POST requests - Full scan (SAFE MODE)"""
+        """Handle POST requests - Full scan with HTML report"""
         client_ip = self.get_client_ip()
         
         if not rate_limiter.is_allowed(client_ip):
@@ -196,15 +194,15 @@ class handler(BaseHTTPRequestHandler):
             loop = asyncio.new_event_loop()
             asyncio.set_event_loop(loop)
             
-            # ===== SAFE FULL SCAN CONFIG =====
+            # ===== SAFE FULL SCAN - REDUCED LIMITS, FEATURES KEPT BUT DISABLED =====
             config = ScanConfig(
                 max_pages=10,                   # REDUCED from 20
                 concurrent_requests=3,          # REDUCED from 5
-                check_subdomains=False,         # SAFE - DISABLED
-                check_ssl_tls=True,             # SAFE
-                check_exposed_data=False,       # SAFE - DISABLED (DANGEROUS!)
-                check_misconfigurations=True,   # SAFE
-                check_dead_links=False          # SAFE - DISABLED
+                check_subdomains=False,         # DISABLED (feature kept, just off)
+                check_ssl_tls=True,             # KEPT
+                check_exposed_data=False,       # DISABLED for safety
+                check_misconfigurations=True,   # KEPT
+                check_dead_links=False          # DISABLED to reduce load
             )
             
             engine = UltimateSEOEngine(config)
