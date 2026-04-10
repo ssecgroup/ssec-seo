@@ -15,6 +15,10 @@
       "destination": "/api/index.py"
     },
     {
+      "source": "/api/debug",
+      "destination": "/api/index.py"
+    },
+    {
       "source": "/",
       "destination": "/api/index.py"
     },
