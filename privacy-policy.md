@@ -1,55 +1,41 @@
-﻿# Privacy Policy for ssec-seo Browser Extension
+﻿# Privacy Policy & Ethical Use Statement for ssec-seo
 
 **Last Updated: April 10, 2026**
 
-## Overview
-ssec-seo is a free, open-source SEO scanner browser extension developed by ssecgroup. We are committed to protecting your privacy.
+## ⚠️ Important Notice
+ssec-seo is a powerful SEO and security auditing tool. **Misuse may be illegal.** 
+By using ssec-seo, you agree to:
+- Only scan websites you **own** or have **explicit written permission** to test
+- Not use this tool for malicious reconnaissance or unauthorized access
+- Comply with all applicable laws (CFAA, GDPR, etc.) and website terms of service
 
-## Data Collection and Usage
-**We DO NOT collect, store, or log any personal information.**
+## What Data Is Processed
+When you scan a URL, the tool:
+- Fetches and analyzes HTML content, headers, and meta tags
+- Checks for security misconfigurations and exposed files (.git, .env, backups)
+- Performs DNS lookups for subdomain discovery
+- Analyzes SSL/TLS certificates
 
-### What the Extension Accesses:
-- **Current Tab URL**: Only when you click the extension icon
-- **Purpose**: To perform SEO analysis on the website you're viewing
-- **Transmission**: The URL is sent to our API at `https://ssec-seo.vercel.app/api/scan`
+## Data Storage & Logging
+- **We DO NOT store scan results on our servers**
+- **We DO NOT log the URLs you scan**
+- All processing is stateless - results are returned directly and discarded
 
-### What We DO NOT Do:
-- ❌ We DO NOT track browsing history
-- ❌ We DO NOT store URLs on our servers
-- ❌ We DO NOT use cookies or analytics
-- ❌ We DO NOT collect IP addresses or location data
-- ❌ We DO NOT share data with third parties
+## Responsible Disclosure
+If you discover exposed sensitive data:
+- Do NOT access, download, or use the exposed information
+- Notify the website owner responsibly
+- Delete any inadvertently obtained data immediately
 
-## Third-Party Services
-The extension communicates only with:
-- `https://ssec-seo.vercel.app` - Our own SEO analysis API
-
-No other third-party services are used.
-
-## Data Security
-- All API communication uses **HTTPS encryption**
-- No user data is stored or logged on our servers
-- The extension runs entirely in your browser
-
-## Your Rights
-You have the right to:
-- Use the extension without providing any personal information
-- Uninstall the extension at any time
-- Review our open-source code on GitHub
-
-## Open Source
-Our code is 100% open-source and available for review:
-https://github.com/ssecgroup/ssec-seo
-
-## Changes to This Policy
-We may update this privacy policy. Changes will be posted on this page.
+## Your Legal Responsibility
+You are solely responsible for:
+- Obtaining permission before scanning third-party websites
+- Complying with all applicable laws in your jurisdiction
+- Using this tool ethically and for legitimate purposes only
 
 ## Contact
-- GitHub: [@ssecgroup](https://github.com/ssecgroup)
-- Issues: https://github.com/ssecgroup/ssec-seo/issues
-
-## Consent
-By using the ssec-seo extension, you consent to this privacy policy.
+- GitHub: https://github.com/ssecgroup/ssec-seo/issues
+- Security concerns: Report via GitHub Security Advisory
 
 ---
-**ssecgroup** • MIT License • 100% Free Forever
+**ssecgroup** • MIT License • Use Responsibly

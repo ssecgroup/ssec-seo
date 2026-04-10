@@ -1,0 +1,24 @@
+﻿# Store Listing Description (Updated with Warning)
+
+⚠️ **IMPORTANT: ssec-seo is a professional SEO and security auditing tool intended for use on websites you own or have permission to test. Misuse may violate laws. Use responsibly.**
+
+---
+
+🔍 ssec-seo is a 100% free, open-source SEO scanner that provides instant analysis of any website with a single click.
+
+✨ FEATURES:
+• Instant SEO scoring (0-100) with risk level assessment
+• Security header analysis and SSL/TLS checking
+• Subdomain discovery and dead link detection
+• One-click access to full HTML reports
+• Completely free - no premium tiers, no ads
+
+⚠️ RESPONSIBLE USE:
+This tool can detect exposed sensitive files. Only scan websites you own or have explicit permission to test. The developers are not responsible for misuse.
+
+🛡️ PRIVACY:
+• No scan results are stored on our servers
+• No URLs are logged
+• Open-source code available for review
+
+🔗 Powered by ssec-seo.vercel.app | GitHub: ssecgroup/ssec-seo

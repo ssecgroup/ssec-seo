@@ -1,4 +1,4 @@
-#  ssec-seo - SEO Scanner by ssecgroup 
+﻿#  ssec-seo - SEO Scanner by ssecgroup 
 
 [![SEO Scanner](https://img.shields.io/badge/ssec--seo-Free%20SEO%20Scanner-667eea)](https://ssec-seo.vercel.app)
 [![API Status](https://img.shields.io/badge/API-Live-success)](https://ssec-seo.vercel.app/api/debug)
@@ -114,10 +114,10 @@ Scan 100+ websites automatically using the matrix workflow.
 
 | Severity | What We Detect |
 |----------|----------------|
-| 🔴 **Critical** | Exposed .git, .env, database backups, AWS keys |
-| 🟠 **High** | Admin panels, phpinfo, directory listing, missing security headers |
-| 🟡 **Medium** | SSL expiry <30 days, too many redirects, missing meta tags |
-| 🔵 **Low** | Server info exposure, missing alt text, old file versions |
+| ðŸ”´ **Critical** | Exposed .git, .env, database backups, AWS keys |
+| ðŸŸ  **High** | Admin panels, phpinfo, directory listing, missing security headers |
+| ðŸŸ¡ **Medium** | SSL expiry <30 days, too many redirects, missing meta tags |
+| ðŸ”µ **Low** | Server info exposure, missing alt text, old file versions |
 
 ---
 
@@ -181,7 +181,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ---
 
-## 💖 Donate
+## ðŸ’– Donate
 
 ssec-seo is **completely free** and always will be.  
 If you find it valuable, consider supporting development:
@@ -220,15 +220,16 @@ Copyright (c) 2026 [ssecgroup](https://github.com/ssecgroup)
 
 ---
 
-## ⭐ Support Us
+## â­ Support Us
 
 If you like ssec-seo:
-- ⭐ Star this repository
-- 🐦 Share on Twitter
-- 👥 Tell your friends
-- 💖 Donate to support development
+- â­ Star this repository
+- ðŸ¦ Share on Twitter
+- ðŸ‘¥ Tell your friends
+- ðŸ’– Donate to support development
 
 ---
 
-**Made with ❤️ by [ssecgroup](https://github.com/ssecgroup)**  
+**Made with â¤ï¸ by [ssecgroup](https://github.com/ssecgroup)**  
 *Open source. Always free. Forever.*
+
