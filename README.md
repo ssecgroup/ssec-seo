@@ -1,5 +1,7 @@
 #  ssec-seo - SEO Scanner by ssecgroup 
 
+[![SEO Scanner](https://img.shields.io/badge/ssec--seo-Free%20SEO%20Scanner-667eea)](https://ssec-seo.vercel.app)
+[![API Status](https://img.shields.io/badge/API-Live-success)](https://ssec-seo.vercel.app/api/debug)
 [![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![GitHub Actions](https://img.shields.io/badge/CI-GitHub%20Actions-blue)](https://github.com/ssecgroup/ssec-seo/actions)
