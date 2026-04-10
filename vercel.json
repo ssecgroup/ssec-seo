@@ -1,5 +1,4 @@
-
-{
+﻿{
   "version": 2,
   "functions": {
     "api/scan.py": {
@@ -21,12 +20,20 @@
       "methods": ["GET", "POST", "OPTIONS"]
     },
     {
+      "src": "/api-docs.html",
+      "dest": "/public/api-docs.html"
+    },
+    {
       "src": "/",
       "dest": "/public/index.html"
     },
     {
       "src": "/index.html",
       "dest": "/public/index.html"
+    },
+    {
+      "src": "/(.*)\\.html",
+      "dest": "/public/$1.html"
     },
     {
       "src": "/(.*)",
