@@ -1,6 +1,6 @@
 ﻿{
   "functions": {
-    "api/scan.py": {
+    "api/index.py": {
       "maxDuration": 60,
       "memory": 1024
     }
@@ -8,32 +8,32 @@
   "rewrites": [
     {
       "source": "/api/scan",
-      "destination": "/api/scan.py"
+      "destination": "/api/index.py"
     },
     {
-      "source": "/api-docs.html",
-      "destination": "/public/api-docs.html"
+      "source": "/api/debug",
+      "destination": "/api/index.py"
     },
     {
       "source": "/",
-      "destination": "/public/index.html"
+      "destination": "/api/index.py"
+    },
+    {
+      "source": "/api-docs.html",
+      "destination": "/api/index.py"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/api/index.py"
     }
   ],
   "headers": [
     {
-      "source": "/api/(.*)",
+      "source": "/(.*)",
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
           "value": "*"
-        },
-        {
-          "key": "Access-Control-Allow-Methods",
-          "value": "GET, POST, OPTIONS"
-        },
-        {
-          "key": "Access-Control-Allow-Headers",
-          "value": "Content-Type"
         }
       ]
     }
