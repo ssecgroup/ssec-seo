@@ -1,0 +1,17 @@
+﻿
+# Generated files
+*-generator.html
+*.zip
+
+# Screenshots
+report*.png
+screenshot*.png
+
+# Temporary folders
+logo/
+temp/
+tmp/
+
+# Local development
+.env
+.env.local
