@@ -15,6 +15,22 @@
       "destination": "/api/scan.py"
     },
     {
+      "source": "/manifest.json",
+      "destination": "/public/manifest.json"
+    },
+    {
+      "source": "/sw.js",
+      "destination": "/public/sw.js"
+    },
+    {
+      "source": "/icon-192.png",
+      "destination": "/public/icon-192.png"
+    },
+    {
+      "source": "/icon-512.png",
+      "destination": "/public/icon-512.png"
+    },
+    {
       "source": "/",
       "destination": "/public/index.html"
     },
