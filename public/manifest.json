@@ -1,12 +1,13 @@
-﻿{
+{
   "name": "ssec-seo Scanner",
   "short_name": "ssec-seo",
   "description": "Instant SEO and security analysis for any website",
-  "start_url": "/",
+  "start_url": "/?utm_source=pwa",
   "display": "fullscreen",
-  "orientation": "portrait",
+  "orientation": "any",
   "background_color": "#667eea",
   "theme_color": "#667eea",
+  "lang": "en",
   "icons": [
     {
       "src": "icon-192.png",
