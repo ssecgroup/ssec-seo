@@ -7,6 +7,10 @@
 [![GitHub Actions](https://img.shields.io/badge/CI-GitHub%20Actions-blue)](https://github.com/ssecgroup/ssec-seo/actions)
 [![GitHub Pages](https://img.shields.io/badge/docs-github%20pages-blue)](https://ssecgroup.github.io/ssec-seo)
 [![Donate](https://img.shields.io/badge/Donate-Ethereum-blue.svg)](#donate)
+[![Edge Extension](https://img.shields.io/badge/Edge-Extension-blue)](https://microsoftedge.microsoft.com/addons/detail/ssec-seo-scanner/khenjefnlboennkponihcamfceccdlfi)
+[![Firefox Add-on](https://img.shields.io/badge/Firefox-Add--on-orange)](https://addons.mozilla.org/addon/ssec-seo-scanner/)
+[![Android](https://img.shields.io/badge/Android-APK-brightgreen)](https://github.com/ssecgroup/ssec-seo/releases/latest)
+[![Windows](https://img.shields.io/badge/Windows-App-blue)](https://github.com/ssecgroup/ssec-seo/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/ssecgroup/ssec-seo/total)](https://github.com/ssecgroup/ssec-seo/releases)
 [![Stars](https://img.shields.io/github/stars/ssecgroup/ssec-seo)](https://github.com/ssecgroup/ssec-seo/stargazers)
 
@@ -189,6 +193,10 @@ If you find it valuable, consider supporting development:
 **Ethereum**: `0x8242f0f25c5445F7822e80d3C9615e57586c6639`
 
 [![Donate](https://img.shields.io/badge/Donate-Ethereum-blue.svg)](https://etherscan.io/address/0x8242f0f25c5445F7822e80d3C9615e57586c6639)
+[![Edge Extension](https://img.shields.io/badge/Edge-Extension-blue)](https://microsoftedge.microsoft.com/addons/detail/ssec-seo-scanner/khenjefnlboennkponihcamfceccdlfi)
+[![Firefox Add-on](https://img.shields.io/badge/Firefox-Add--on-orange)](https://addons.mozilla.org/addon/ssec-seo-scanner/)
+[![Android](https://img.shields.io/badge/Android-APK-brightgreen)](https://github.com/ssecgroup/ssec-seo/releases/latest)
+[![Windows](https://img.shields.io/badge/Windows-App-blue)](https://github.com/ssecgroup/ssec-seo/releases/latest)
 
 Your donations help:
 -  Add new features
@@ -208,8 +216,8 @@ Your donations help:
 - [ ] Historical tracking
 - [ ] Competitor analysis
 - [ ] WordPress plugin
-- [ ] Browser extension
-- [ ] API marketplace
+- [x] Browser extension ✅ **NOW LIVE!**
+- [x] Android App ✅\n- [x] Windows App ✅\n- [ ] iOS App\n- [ ] API marketplace
 
 ---
 
@@ -232,5 +240,6 @@ If you like ssec-seo:
 
 **Made with â¤ï¸ by [ssecgroup](https://github.com/ssecgroup)**  
 *Open source. Always free. Forever.*
+
 
 
