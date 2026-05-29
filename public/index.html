@@ -1,6 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="manifest" href="/manifest.json">
     <title>ssec-seo - SEO Scanner by ssecgroup</title>
     <meta charset="UTF-8">
@@ -200,6 +203,27 @@
         .badge-low {
             background: #27ae60;
             color: white;
+        }
+    </style>
+    <style>
+        /* Mobile optimization */
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px !important;
+                border-radius: 10px !important;
+            }
+            h1 { font-size: 24px !important; }
+            input, button { 
+                padding: 12px !important; 
+                font-size: 14px !important;
+            }
+            .input-group {
+                flex-direction: column !important;
+                gap: 8px !important;
+            }
+            body {
+                padding: 10px !important;
+            }
         }
     </style>
 </head>
@@ -445,3 +469,4 @@ if ('serviceWorker' in navigator) {
 </script>
 </body>
 </html>
+
