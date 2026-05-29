@@ -1,4 +1,4 @@
-#  ssec-seo - SEO Scanner by ssecgroup 
+see update this dont miss anything and before update check all our requirements: #  ssec-seo - SEO Scanner by ssecgroup 
 
 [![SEO Scanner](https://img.shields.io/badge/ssec--seo-Free%20SEO%20Scanner-667eea)](https://ssec-seo.vercel.app)
 [![API Status](https://img.shields.io/badge/API-Live-success)](https://ssec-seo.vercel.app/api/debug)
@@ -7,6 +7,10 @@
 [![GitHub Actions](https://img.shields.io/badge/CI-GitHub%20Actions-blue)](https://github.com/ssecgroup/ssec-seo/actions)
 [![GitHub Pages](https://img.shields.io/badge/docs-github%20pages-blue)](https://ssecgroup.github.io/ssec-seo)
 [![Donate](https://img.shields.io/badge/Donate-Ethereum-blue.svg)](#donate)
+[![Edge Extension](https://img.shields.io/badge/Edge-Extension-blue)](https://microsoftedge.microsoft.com/addons/detail/ssec-seo-scanner/khenjefnlboennkponihcamfceccdlfi)
+[![Firefox Add-on](https://img.shields.io/badge/Firefox-Add--on-orange)](https://addons.mozilla.org/addon/ssec-seo-scanner/)
+[![Android App](https://img.shields.io/badge/Android-APK-brightgreen)](https://github.com/ssecgroup/ssec-seo/releases/latest)
+[![Windows App](https://img.shields.io/badge/Windows-App-blue)](https://github.com/ssecgroup/ssec-seo/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/ssecgroup/ssec-seo/total)](https://github.com/ssecgroup/ssec-seo/releases)
 [![Stars](https://img.shields.io/github/stars/ssecgroup/ssec-seo)](https://github.com/ssecgroup/ssec-seo/stargazers)
 
@@ -15,7 +19,7 @@
 
 ---
 
-##  Features
+## :sparkles: Features
 
 | Category | Capabilities |
 |----------|--------------|
@@ -30,7 +34,7 @@
 
 ---
 
-##  Quick Start
+## :zap: Quick Start
 
 ### Install via pip
 ```bash
@@ -49,7 +53,7 @@ ssec-seo quick https://google.com
 
 ---
 
-##  Example Report
+## :page_facing_up: Example Report
 
 When you run a scan, ssec-seo generates a **beautiful HTML report** with:
 - Executive summary with scores
@@ -64,7 +68,25 @@ When you run a scan, ssec-seo generates a **beautiful HTML report** with:
 
 ---
 
-##  Advanced Usage
+
+---
+
+## :electric_plug: Browser Extensions
+
+ssec-seo is available as a browser extension for instant SEO audits with one click:
+
+| Browser | Store |
+|---------|-------|
+| **Microsoft Edge** | [Install from Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/ssec-seo-scanner/khenjefnlboennkponihcamfceccdlfi) |
+| **Mozilla Firefox** | [Install from Firefox Add-ons](https://addons.mozilla.org/addon/ssec-seo-scanner/) |
+
+**Extension Features:**
+- Instant SEO scoring (0-100) with one click
+- SSL/TLS and security header analysis
+- 5 free scans every 24 hours - no account required
+- No tracking, no ads, 100% open source
+
+## :rocket: Advanced Usage
 
 ### Scan with custom options
 ```bash
@@ -88,7 +110,7 @@ ssec-seo load ssec-seo_config.json
 
 ---
 
-##  GitHub Actions (Free Cloud Scanning)
+## :octocat: GitHub Actions (Free Cloud Scanning)
 
 ssec-seo includes ready-to-use GitHub Actions workflows:
 
@@ -110,18 +132,32 @@ Scan 100+ websites automatically using the matrix workflow.
 
 ---
 
-##  What ssec-seo Finds
+## :mag: What ssec-seo Finds
 
 | Severity | What We Detect |
 |----------|----------------|
-| :red_circle: **Critical** | Exposed .git, .env, database backups, AWS keys |
-| :orange_circle: **High** | Admin panels, phpinfo, directory listing, missing security headers |
-| :yellow_circle: **Medium** | SSL expiry <30 days, too many redirects, missing meta tags |
-| :blue_circle: **Low** | Server info exposure, missing alt text, old file versions |
+| `CRITICAL` **Critical** | Exposed .git, .env, database backups, AWS keys |
+| `HIGH` **High** | Admin panels, phpinfo, directory listing, missing security headers |
+| `MEDIUM` **Medium** | SSL expiry <30 days, too many redirects, missing meta tags |
+| `LOW` **Low** | Server info exposure, missing alt text, old file versions |
 
 ---
 
-##  Installation on Different Platforms
+
+---
+
+## :mobile_phone: Download Apps
+
+| Platform | Download | Install Guide |
+|----------|----------|---------------|
+| **Android** | [Download APK](https://github.com/ssecgroup/ssec-seo/releases/latest/download/ssec-seo.apk) | See [INSTALL.md](INSTALL.md) |
+| **Windows** | [Download MSIX](https://github.com/ssecgroup/ssec-seo/releases/latest/download/ssec-seo.msixbundle) | See [INSTALL.md](INSTALL.md) |
+| **Web App** | [Open Web App](https://ssec-seo.vercel.app) | No install needed |
+
+### :iphone: Android Users - Easiest Method
+Visit **[ssec-seo.vercel.app](https://ssec-seo.vercel.app)** on your Android phone. Chrome will show an **"Install"** prompt - tap it and the app installs automatically with no permissions needed!
+
+## :computer: Installation on Different Platforms
 
 ### Linux / macOS
 ```bash
@@ -152,7 +188,7 @@ docker run --rm ssecgroup/ssec-seo scan https://example.com
 
 ---
 
-##  Running Tests
+## :white_check_mark: Running Tests
 
 ```bash
 # Unit tests
@@ -167,7 +203,7 @@ pytest --cov=ssec-seo tests/
 
 ---
 
-##  Contributing
+## :handshake: Contributing
 
 We welcome contributions! Here's how you can help:
 
@@ -198,7 +234,7 @@ Your donations help:
 
 ---
 
-##  Roadmap
+## :world_map: Roadmap
 
 - [x] Core crawling engine
 - [x] SSL/TLS scanning
@@ -208,12 +244,16 @@ Your donations help:
 - [ ] Historical tracking
 - [ ] Competitor analysis
 - [ ] WordPress plugin
-- [x] Browser extension :white_check_mark: **LIVE**
+- [x] Browser extension :white_check_mark: **LIVE on Edge and Firefox**
 - [x] Android App :white_check_mark:
+- [x] Windows App :white_check_mark:
+- [ ] iOS App
+- [ ] Google Play Store listing
+- [ ] API marketplace
 
 ---
 
-##  License
+## :page_facing_up: License
 
 MIT License - use it anywhere!  
 Copyright (c) 2026 [ssecgroup](https://github.com/ssecgroup)
@@ -223,18 +263,12 @@ Copyright (c) 2026 [ssecgroup](https://github.com/ssecgroup)
 ## :star: Support Us
 
 If you like ssec-seo:
-- â­ Star this repository
-- ðŸ¦ Share on Twitter
-- ðŸ‘¥ Tell your friends
-- ðŸ’– Donate to support development
+- :star: Star this repository
+- :bird: Share on Twitter
+- :busts_in_silhouette: Tell your friends
+- :hearts: Donate to support development
 
 ---
 
-**Made with :heart: by [ssecgroup](https://github.com/ssecgroup)**
+**Made with :heart: by [ssecgroup](https://github.com/ssecgroup)**  
 *Open source. Always free. Forever.*
-
-
-
-- [x] Windows App :white_check_mark:
-- [ ] iOS App
-- [ ] API marketplace
