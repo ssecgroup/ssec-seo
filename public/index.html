@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <link rel="manifest" href="/manifest.json">
@@ -206,7 +206,7 @@
 <body>
     <div class="container">
         <h1>
-            ðŸ” ssec-seo
+            ???? ssec-seo
             <span class="badge badge-critical">BETA</span>
         </h1>
         <div class="subtitle">SEO Intelligence Platform by ssecgroup- 100% Free</div>
@@ -230,14 +230,14 @@
             <h3>Scan Results</h3>
             <div class="stats" id="stats"></div>
             <div id="reportPreview"></div>
-            <button onclick="downloadReport()" id="downloadBtn" style="margin-top: 20px; width: 100%; display: none;">ðŸ“¥ Download Full Report</button>
+            <button onclick="downloadReport()" id="downloadBtn" style="margin-top: 20px; width: 100%; display: none;">???? Download Full Report</button>
         </div>
         
         <div class="error" id="error"></div>
         
         <!-- FIX 1: Change SPYGLASS to ssec-seo in donation section -->
         <div class="donate">
-            <h3>ðŸ’– Support Open Source</h3>
+            <h3>???? Support Open Source</h3>
             <p><strong>ssec-seo</strong> is completely free. If you find it useful:</p>
             <div class="eth-address" onclick="copyAddress()">
                 0x8242f0f25c5445F7822e80d3C9615e57586c6639
@@ -246,7 +246,7 @@
         </div>
         
         <footer>
-            <p>Made with â¤ï¸ by <a href="https://github.com/ssecgroup" style="color: #667eea;">ssecgroup</a> | MIT License</p>
+            <p>Made with ?????? by <a href="https://github.com/ssecgroup" style="color: #667eea;">ssecgroup</a> | MIT License</p>
             <p style="font-size: 12px;">Version 0.1.0</p>
         </footer>
     </div>
@@ -402,7 +402,7 @@
             
             reportPreview.innerHTML = `
                 <div style="background: #27ae60; color: white; padding: 15px; border-radius: 10px;">
-                    âœ… Full scan complete! Click Download to save the report.
+                    ??? Full scan complete! Click Download to save the report.
                 </div>
             `;
             
@@ -434,5 +434,14 @@
             document.getElementById('url').value = 'https://example.com';
         };
     </script>
+<script>
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('SW registered'))
+            .catch(err => console.log('SW failed:', err));
+    });
+}
+</script>
 </body>
 </html>
