@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>ssec-seo - SEO Scanner by ssecgroup</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="manifest" href="/manifest.json">
-    <title>ssec-seo - SEO Scanner by ssecgroup</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         * {
             margin: 0;
@@ -185,55 +184,27 @@
             margin-left: 10px;
         }
         
-        .badge-critical {
-            background: #e74c3c;
-            color: white;
-        }
-        
-        .badge-high {
-            background: #e67e22;
-            color: white;
-        }
-        
-        .badge-medium {
-            background: #f1c40f;
-            color: #333;
-        }
-        
-        .badge-low {
-            background: #27ae60;
-            color: white;
-        }
-    </style>
-    <style>
-        /* Mobile optimization */
+        .badge-critical { background: #e74c3c; color: white; }
+        .badge-high { background: #e67e22; color: white; }
+        .badge-medium { background: #f1c40f; color: #333; }
+        .badge-low { background: #27ae60; color: white; }
+
         @media (max-width: 480px) {
-            .container {
-                padding: 15px !important;
-                border-radius: 10px !important;
-            }
+            .container { padding: 15px !important; border-radius: 10px !important; }
             h1 { font-size: 24px !important; }
-            input, button { 
-                padding: 12px !important; 
-                font-size: 14px !important;
-            }
-            .input-group {
-                flex-direction: column !important;
-                gap: 8px !important;
-            }
-            body {
-                padding: 10px !important;
-            }
+            input, button { padding: 12px !important; font-size: 14px !important; }
+            .input-group { flex-direction: column !important; gap: 8px !important; }
+            body { padding: 10px !important; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>
-            ???? ssec-seo
+            <span style="font-size:28px;">&#9906;</span> ssec-seo
             <span class="badge badge-critical">BETA</span>
         </h1>
-        <div class="subtitle">SEO Intelligence Platform by ssecgroup- 100% Free</div>
+        <div class="subtitle">SEO Intelligence Platform by ssecgroup - 100% Free</div>
         
         <div class="input-group">
             <input type="url" id="url" placeholder="https://example.com" value="https://example.com">
@@ -254,14 +225,13 @@
             <h3>Scan Results</h3>
             <div class="stats" id="stats"></div>
             <div id="reportPreview"></div>
-            <button onclick="downloadReport()" id="downloadBtn" style="margin-top: 20px; width: 100%; display: none;">???? Download Full Report</button>
+            <button onclick="downloadReport()" id="downloadBtn" style="margin-top: 20px; width: 100%; display: none;">Download Full Report</button>
         </div>
         
         <div class="error" id="error"></div>
         
-        <!-- FIX 1: Change SPYGLASS to ssec-seo in donation section -->
         <div class="donate">
-            <h3>???? Support Open Source</h3>
+            <h3>&#9829; Support Open Source</h3>
             <p><strong>ssec-seo</strong> is completely free. If you find it useful:</p>
             <div class="eth-address" onclick="copyAddress()">
                 0x8242f0f25c5445F7822e80d3C9615e57586c6639
@@ -270,7 +240,7 @@
         </div>
         
         <footer>
-            <p>Made with ?????? by <a href="https://github.com/ssecgroup" style="color: #667eea;">ssecgroup</a> | MIT License</p>
+            <p>Made with &#9829; by <a href="https://github.com/ssecgroup" style="color: #667eea;">ssecgroup</a> | MIT License</p>
             <p style="font-size: 12px;">Version 0.1.0</p>
         </footer>
     </div>
@@ -280,32 +250,21 @@
         
         async function scanWebsite() {
             const url = document.getElementById('url').value;
-            if (!url) {
-                alert('Please enter a URL');
-                return;
-            }
+            if (!url) { alert('Please enter a URL'); return; }
             currentUrl = url;
             await quickScan();
         }
         
         async function quickScan() {
             const url = document.getElementById('url').value;
-            if (!url) {
-                alert('Please enter a URL');
-                return;
-            }
-            
+            if (!url) { alert('Please enter a URL'); return; }
             currentUrl = url;
             await runScan(url, 'quick');
         }
         
         async function fullScan() {
             const url = document.getElementById('url').value;
-            if (!url) {
-                alert('Please enter a URL');
-                return;
-            }
-            
+            if (!url) { alert('Please enter a URL'); return; }
             currentUrl = url;
             await runScan(url, 'full');
         }
@@ -320,10 +279,8 @@
             const downloadBtn = document.getElementById('downloadBtn');
             const loadingMessage = document.getElementById('loadingMessage');
             
-            // Disable buttons
             [scanBtn, quickBtn, fullBtn].forEach(btn => btn.disabled = true);
             
-            // Show loading
             if (type === 'full') {
                 loadingMessage.textContent = 'Running full SEO scan... This may take 2-3 minutes';
             } else {
@@ -339,30 +296,19 @@
                 if (type === 'quick') {
                     response = await fetch(`/api/scan?url=${encodeURIComponent(url)}`);
                     const data = await response.json();
-                    
-                    if (data.error) {
-                        throw new Error(data.error);
-                    }
-                    
+                    if (data.error) { throw new Error(data.error); }
                     displayQuickResults(data);
                 } else {
                     response = await fetch('/api/scan', {
                         method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
+                        headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ url: url })
                     });
-                    
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    
+                    if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`); }
                     const html = await response.text();
                     displayFullResults(html);
                     downloadBtn.style.display = 'block';
                 }
-                
             } catch (err) {
                 error.style.display = 'block';
                 error.textContent = 'Error: ' + err.message;
@@ -377,33 +323,16 @@
             const results = document.getElementById('results');
             
             let riskBadge = '';
-            if (data.risk_level === 'critical') {
-                riskBadge = '<span class="badge badge-critical">CRITICAL</span>';
-            } else if (data.risk_level === 'high') {
-                riskBadge = '<span class="badge badge-high">HIGH</span>';
-            } else if (data.risk_level === 'medium') {
-                riskBadge = '<span class="badge badge-medium">MEDIUM</span>';
-            } else {
-                riskBadge = '<span class="badge badge-low">LOW</span>';
-            }
+            if (data.risk_level === 'critical') riskBadge = '<span class="badge badge-critical">CRITICAL</span>';
+            else if (data.risk_level === 'high') riskBadge = '<span class="badge badge-high">HIGH</span>';
+            else if (data.risk_level === 'medium') riskBadge = '<span class="badge badge-medium">MEDIUM</span>';
+            else riskBadge = '<span class="badge badge-low">LOW</span>';
             
             stats.innerHTML = `
-                <div class="stat">
-                    <div class="stat-value">${data.pages_scanned || 0}</div>
-                    <div class="stat-label">Pages</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">${data.total_issues || 0}</div>
-                    <div class="stat-label">Issues</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">${data.critical_issues || 0}</div>
-                    <div class="stat-label">Critical</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">${data.score || 0}</div>
-                    <div class="stat-label">Score</div>
-                </div>
+                <div class="stat"><div class="stat-value">${data.pages_scanned || 0}</div><div class="stat-label">Pages</div></div>
+                <div class="stat"><div class="stat-value">${data.total_issues || 0}</div><div class="stat-label">Issues</div></div>
+                <div class="stat"><div class="stat-value">${data.critical_issues || 0}</div><div class="stat-label">Critical</div></div>
+                <div class="stat"><div class="stat-value">${data.score || 0}</div><div class="stat-label">Score</div></div>
             `;
             
             document.getElementById('reportPreview').innerHTML = `
@@ -418,55 +347,32 @@
         }
         
         function displayFullResults(html) {
-            const results = document.getElementById('results');
-            const reportPreview = document.getElementById('reportPreview');
-            
-            // Store HTML for download
             window.lastReportHTML = html;
-            
-            reportPreview.innerHTML = `
+            document.getElementById('reportPreview').innerHTML = `
                 <div style="background: #27ae60; color: white; padding: 15px; border-radius: 10px;">
-                    ??? Full scan complete! Click Download to save the report.
+                    Full scan complete! Click Download to save the report.
                 </div>
             `;
-            
-            results.style.display = 'block';
+            document.getElementById('results').style.display = 'block';
         }
         
         function downloadReport() {
-            if (!window.lastReportHTML) {
-                alert('No report available. Run a full scan first.');
-                return;
-            }
-            
+            if (!window.lastReportHTML) { alert('No report available.'); return; }
             const blob = new Blob([window.lastReportHTML], { type: 'text/html' });
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
-            // FIX 2: Change filename from spyglass_report_ to ssec-seo_report_
             a.download = `ssec-seo_report_${currentUrl.replace(/[^a-z0-9]/gi, '_')}_${new Date().getTime()}.html`;
             a.click();
         }
         
         function copyAddress() {
-            const addr = '0x8242f0f25c5445F7822e80d3C9615e57586c6639';
-            navigator.clipboard.writeText(addr);
+            navigator.clipboard.writeText('0x8242f0f25c5445F7822e80d3C9615e57586c6639');
             alert('ETH address copied!');
         }
         
-        // Load example on page load
         window.onload = function() {
             document.getElementById('url').value = 'https://example.com';
         };
     </script>
-<script>
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then(reg => console.log('SW registered'))
-            .catch(err => console.log('SW failed:', err));
-    });
-}
-</script>
 </body>
 </html>
-
