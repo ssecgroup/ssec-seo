@@ -1,4 +1,4 @@
-﻿#  ssec-seo - SEO Scanner by ssecgroup 
+#  ssec-seo - SEO Scanner by ssecgroup 
 
 [![SEO Scanner](https://img.shields.io/badge/ssec--seo-Free%20SEO%20Scanner-667eea)](https://ssec-seo.vercel.app)
 [![API Status](https://img.shields.io/badge/API-Live-success)](https://ssec-seo.vercel.app/api/debug)
@@ -6,7 +6,7 @@
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![GitHub Actions](https://img.shields.io/badge/CI-GitHub%20Actions-blue)](https://github.com/ssecgroup/ssec-seo/actions)
 [![GitHub Pages](https://img.shields.io/badge/docs-github%20pages-blue)](https://ssecgroup.github.io/ssec-seo)
-[![Donate](https://img.shields.io/badge/Donate-Ethereum-blue.svg)](#donate)
+[![:hearts: Donate](https://img.shields.io/badge/:hearts: Donate-Ethereum-blue.svg)](#:hearts: Donate)
 [![Edge Extension](https://img.shields.io/badge/Edge-Extension-blue)](https://microsoftedge.microsoft.com/addons/detail/ssec-seo-scanner/khenjefnlboennkponihcamfceccdlfi)
 [![Firefox Add-on](https://img.shields.io/badge/Firefox-Add--on-orange)](https://addons.mozilla.org/addon/ssec-seo-scanner/)
 [![Android](https://img.shields.io/badge/Android-APK-brightgreen)](https://github.com/ssecgroup/ssec-seo/releases/latest)
@@ -30,98 +30,12 @@
 | **Security** | HTTP headers, misconfigurations, directory listing |
 | **Dead Links** | Full redirect chain analysis, broken link detection |
 | **Reports** | Beautiful HTML with charts, one-click PDF export |
-| **Free Cloud** | GitHub Actions integration - scan without installation |
-
----
-
-##  Quick Start
-
-### Install via pip
-```bash
-pip install ssec-seo
-```
-
-### Scan any website
-```bash
-ssec-seo scan https://example.com
-```
-
-### Quick info
-```bash
-ssec-seo quick https://google.com
-```
-
----
-
-##  Example Report
-
-When you run a scan, ssec-seo generates a **beautiful HTML report** with:
-- Executive summary with scores
-- Interactive severity charts
-- Critical issues highlighted
-- Exposed data tables
-- Discovered subdomains
-- SSL certificate details
-- Actionable recommendations
-
-[ View Sample Report](https://ssecgroup.github.io/ssec-seo/sample.html)
-
----
-
-##  Advanced Usage
-
-### Scan with custom options
-```bash
-ssec-seo scan https://example.com --max-pages 500 --concurrent 50 --output report.html
-```
-
-### Batch scan multiple URLs
-```bash
-# Create urls.txt with one URL per line
-echo "https://site1.com" > urls.txt
-echo "https://site2.com" >> urls.txt
-
-# Run batch scan (uses GitHub Actions)
-```
-
-### Configuration file
-```bash
-ssec-seo configure  # Creates ssec-seo_config.json
-ssec-seo load ssec-seo_config.json
-```
-
----
-
-##  GitHub Actions (Free Cloud Scanning)
-
-ssec-seo includes ready-to-use GitHub Actions workflows:
-
-### Manual scan
-1. Go to **Actions** tab
-2. Select **ssec-seo**
-3. Enter URL and click **Run workflow**
-4. Download report from artifacts
-
-### Scheduled scans
-```yaml
-# Automatic weekly scans
-schedule:
-  - cron: '0 0 * * 0'  # Every Sunday
-```
-
-### Batch scanning
-Scan 100+ websites automatically using the matrix workflow.
-
----
-
-##  What ssec-seo Finds
-
-| Severity | What We Detect |
+| **Free Cloud** | GitHub Actions integration - scan without installation | `CRITICAL` **Critical** | Exposed .git, .env, database backups, AWS keys | Severity | What We Detect |
 |----------|----------------|
-| ðŸ”´ **Critical** | Exposed .git, .env, database backups, AWS keys |
-| ðŸŸ  **High** | Admin panels, phpinfo, directory listing, missing security headers |
-| ðŸŸ¡ **Medium** | SSL expiry <30 days, too many redirects, missing meta tags |
-| ðŸ”µ **Low** | Server info exposure, missing alt text, old file versions |
+| `CRITICAL` **Critical** | Exposed .git, .env, database backups, AWS keys | Exposed .git, .env, database backups, AWS keys |
+| `HIGH` **High** | Admin panels, phpinfo, directory listing, missing security headers | Admin panels, phpinfo, directory listing, missing security headers |
+| `MEDIUM` **Medium** | SSL expiry <30 days, too many redirects, missing meta tags | SSL expiry <30 days, too many redirects, missing meta tags |
+| `LOW` **Low** | Server info exposure, missing alt text, old file versions | Server info exposure, missing alt text, old file versions |
 
 ---
 
@@ -185,14 +99,14 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ---
 
-## ðŸ’– Donate
+## ðŸ’– :hearts: Donate
 
 ssec-seo is **completely free** and always will be.  
 If you find it valuable, consider supporting development:
 
 **Ethereum**: `0x8242f0f25c5445F7822e80d3C9615e57586c6639`
 
-[![Donate](https://img.shields.io/badge/Donate-Ethereum-blue.svg)](https://etherscan.io/address/0x8242f0f25c5445F7822e80d3C9615e57586c6639)
+[![:hearts: Donate](https://img.shields.io/badge/:hearts: Donate-Ethereum-blue.svg)](https://etherscan.io/address/0x8242f0f25c5445F7822e80d3C9615e57586c6639)
 [![Edge Extension](https://img.shields.io/badge/Edge-Extension-blue)](https://microsoftedge.microsoft.com/addons/detail/ssec-seo-scanner/khenjefnlboennkponihcamfceccdlfi)
 [![Firefox Add-on](https://img.shields.io/badge/Firefox-Add--on-orange)](https://addons.mozilla.org/addon/ssec-seo-scanner/)
 [![Android](https://img.shields.io/badge/Android-APK-brightgreen)](https://github.com/ssecgroup/ssec-seo/releases/latest)
@@ -228,17 +142,17 @@ Copyright (c) 2026 [ssecgroup](https://github.com/ssecgroup)
 
 ---
 
-## â­ Support Us
+## â­ :star: Support Us
 
 If you like ssec-seo:
-- â­ Star this repository
+- â­ :star: Star this repository
 - ðŸ¦ Share on Twitter
 - ðŸ‘¥ Tell your friends
-- ðŸ’– Donate to support development
+- ðŸ’– :hearts: Donate to support development
 
 ---
 
-**Made with â¤ï¸ by [ssecgroup](https://github.com/ssecgroup)**  
+**Made with :heart: by [ssecgroup](https://github.com/ssecgroup)**  
 *Open source. Always free. Forever.*
 
 
